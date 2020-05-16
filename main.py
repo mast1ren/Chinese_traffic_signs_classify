@@ -1,10 +1,9 @@
 from train import *
 from resnet import ResNet
-from sklearn.metrics import f1_score
 
 torch.cuda.empty_cache()
 
-# train()
+train()
 
 test_data = trafficDataset(label_file_path='./Test/label_test.txt', train=False)
 test_loader = DataLoader(test_data, batch_size=128, shuffle=True)
