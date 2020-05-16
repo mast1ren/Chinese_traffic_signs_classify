@@ -6,7 +6,7 @@ torch.cuda.empty_cache()
 
 # train()
 
-test_data = trafficDataset(label_file_path='./test/label_test.txt', train=False)
+test_data = trafficDataset(label_file_path='./Test/label_test.txt', train=False)
 test_loader = DataLoader(test_data, batch_size=128, shuffle=True)
 
 model = ResNet().to(device)

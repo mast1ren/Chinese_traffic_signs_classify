@@ -9,7 +9,7 @@ device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 EPOCH = 20
 LEARNING_RATE = 0.001
 
-full_data = trafficDataset(label_file_path='./train/label_train.txt', train=True)
+full_data = trafficDataset(label_file_path='./Train/label_train.txt', train=True)
 train_size = int(0.9 * len(full_data))
 vali_size = len(full_data) - train_size
 train_data, vali_data = torch.utils.data.random_split(full_data, [train_size, vali_size])
