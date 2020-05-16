@@ -2,7 +2,7 @@ import torch
 from torch import nn
 from dataload import trafficDataset
 from torch.utils.data import DataLoader
-from CNN import ResNet
+from resnet import ResNet
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 

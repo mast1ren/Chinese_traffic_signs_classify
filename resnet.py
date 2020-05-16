@@ -6,18 +6,17 @@ class BasicBlock(nn.Module):
         super(BasicBlock, self).__init__()
         self.stride = stride
         self.conv1 = nn.Sequential(
-            nn.Conv2d(in_num, num, kernel_size=1, bias=False),  # => num*h*w
+            nn.Conv2d(in_num, num, kernel_size=1, bias=False),
             nn.BatchNorm2d(num),
             nn.ReLU(inplace=True)
         )
         self.conv2 = nn.Sequential(
             nn.Conv2d(num, num, kernel_size=3, stride=self.stride, padding=1, bias=False),
-            # => num*(h-1)/stride+1*(w-1)/stride+1
             nn.BatchNorm2d(num),
             nn.ReLU(inplace=True)
         )
         self.conv3 = nn.Sequential(
-            nn.Conv2d(num, num * 4, kernel_size=1, bias=False),  # => (4*num)*h*w
+            nn.Conv2d(num, num * 4, kernel_size=1, bias=False),
             nn.BatchNorm2d(num * 4)
         )
 
@@ -33,7 +32,7 @@ class BasicBlock(nn.Module):
         y = self.conv2(y)
         y = self.conv3(y)
         residual = self.conv4(x)
-        return nn.ReLU(inplace=True)(residual + y)  # => (4*num)*h*w
+        return nn.ReLU(inplace=True)(residual + y)
 
 
 class ResNet(nn.Module):
@@ -42,16 +41,15 @@ class ResNet(nn.Module):
         self.in_channels = 64
 
         self.conv1 = nn.Sequential(
-            # 128-7+6 / 2 +1
-            nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False),  # =>16*64*64*64
+            nn.Conv2d(3, 64, kernel_size=7, stride=2, padding=3, bias=False),
             nn.BatchNorm2d(64),
             nn.ReLU(inplace=True),
-            nn.MaxPool2d(kernel_size=3, stride=2, padding=1)  # 16*64*32*32
+            nn.MaxPool2d(kernel_size=3, stride=2, padding=1)
         )
-        self.conv2_x = self._make_layer(16, 3, 1)  # => 16*64*32*32 16*64*32*32 16*64*32*32
-        self.conv3_x = self._make_layer(32, 4, 2)  # => 16*16*128*128
-        self.conv4_x = self._make_layer(64, 6, 2)  # => 16*24*128*128
-        self.conv5_x = self._make_layer(128, 3, 2)  # => 16*12*128*128
+        self.conv2_x = self._make_layer(16, 3, 1)
+        self.conv3_x = self._make_layer(32, 4, 2)
+        self.conv4_x = self._make_layer(64, 6, 2)
+        self.conv5_x = self._make_layer(128, 3, 2)
         self.avg_pool = nn.AvgPool2d(7, stride=1)
         self.fc = nn.Linear(2048, 58)
 

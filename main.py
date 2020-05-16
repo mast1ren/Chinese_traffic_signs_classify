@@ -1,5 +1,5 @@
 from train import *
-from CNN import ResNet
+from resnet import ResNet
 from sklearn.metrics import f1_score
 
 torch.cuda.empty_cache()
