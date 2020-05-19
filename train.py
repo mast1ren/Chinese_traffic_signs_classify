@@ -4,7 +4,7 @@ from dataload import trafficDataset
 from torch.utils.data import DataLoader
 from resnet import ResNet
 from sklearn.metrics import precision_recall_fscore_support
-from score import plotScore
+from diagram import plotScore
 
 device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
 

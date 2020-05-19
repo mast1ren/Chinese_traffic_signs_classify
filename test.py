@@ -4,16 +4,10 @@ from dataload import trafficDataset
 from torch.utils.data import DataLoader
 from torchvision import transforms
 from PIL import Image
-from resnet import ResNet
-
-torch.cuda.empty_cache()
-
-model = ResNet().to(device)
-model.load_state_dict(torch.load('model.pt'))
-model.eval()
+from diagram import plotPredictedResult
 
 
-def test():
+def test(model):
     test_data = trafficDataset(label_file_path='./Test/label_test.txt', train=False)
     test_loader = DataLoader(test_data, batch_size=128, shuffle=True)
 
@@ -35,7 +29,7 @@ def test():
             print(total, correct)
 
 
-def test_single_img(img_path):
+def test_single_img(img_path, model):
     img = transforms.Compose([transforms.Resize((256, 256)),
                               transforms.ToTensor(),
                               transforms.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))
@@ -47,8 +41,16 @@ def test_single_img(img_path):
 
     output = model(img)
     torch.no_grad()
-    percent, pre = output.sort(descending=True)
-    percent = percent.softmax(dim=1) * 100
+    percent, predicted = output.sort(descending=True)
+    percent = percent.softmax(dim=1)
 
-    for i in range(5):
-        print(pre[0][i], percent[0][i])
+    predicted = torch.squeeze(predicted)
+    percent = torch.squeeze(percent)
+
+    percent_top5 = percent.cpu().tolist()
+    percent_top5 = percent_top5[:5]
+
+    predicted_top5 = predicted.cpu().tolist()
+    predicted_top5 = predicted_top5[:5]
+
+    plotPredictedResult(img_path, predicted=predicted_top5, percent=percent_top5)
