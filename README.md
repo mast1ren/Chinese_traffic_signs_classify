@@ -2,7 +2,7 @@
 ## 网络 NN
 模型使用 ResNet50
 
-based on ResNet50
+Based on ResNet50
 
 ## 数据集 dataset
 数据来源于 [Chinese Traffic Sign Database](http://www.nlpr.ia.ac.cn/pal/trafficdata/recognition.html)
@@ -27,10 +27,10 @@ Format `label.txt` under Train and Test folder to `path label`.
 |--|--|--|--|
 |92%|0.9784|0.9902|0.9781|
 
-AdamW + 0.01 lr：
+AdamW + 0.01_lr with 0.5_gamma/5_epoch：
 <img src="model&img/score-adamw-0.01lr-50epoch.svg" alt="Adamw" style="zoom:50%;" />
 
-SGD + 0.01 lr：
+SGD + 0.01_lr with 0.5_gamma/10_epoch：
 <img src="model&img/score-SGD-0.01lr-50epoch.svg" alt="SGD" style="zoom:50%;" />
 
 forecast result：
