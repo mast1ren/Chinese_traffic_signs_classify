@@ -1,28 +1,38 @@
-# 基于 ResNet 的交通标识分类
-## 网络
+# 基于 ResNet 的交通标识分类 Chinese-Traffic-Signs-Classify based on ResNet
+## 网络 NN
 模型使用 ResNet50
 
-## 数据集
+based on ResNet50
+
+## 数据集 dataset
 数据来源于 [Chinese Traffic Sign Database](http://www.nlpr.ia.ac.cn/pal/trafficdata/recognition.html)
 
 共 4170 张训练图片，1994 张测试图片，58 个类别
 
 数据集很小，而且分类数量不均衡，最少的一类只有 2 张训练图片
 
-将训练和测试文件夹下的 `label.txt` 文件改为 `path label` 的格式
+将 Train 和 Test 文件夹下的 `label.txt` 文件改为 `path label` 的格式
+
+All the images comes from [Chinese Traffic Sign Database](http://www.nlpr.ia.ac.cn/pal/trafficdata/recognition.html)
+
+There are 4,170 images for training and 1,994 images for testing in the database, containing 58 categories.
+
+The amount of images is quite small and unevenly classified.
+
+Format `label.txt` under Train and Test folder to `path label`.
 
 ## 模型数据
 
-|准确率|精确|召回|f1|
+|test accurary|precision|recall|f1|
 |--|--|--|--|
 |92%|0.9784|0.9902|0.9781|
 
-AdamW 优化器 0.01 lr：
-<img src="model&img/score-adamw-0.01lr-50epoch.svg" alt="Adamw 优化器" style="zoom:50%;" />
+AdamW + 0.01 lr：
+<img src="model&img/score-adamw-0.01lr-50epoch.svg" alt="Adamw" style="zoom:50%;" />
 
-SGD 优化器 0.01 lr：
-<img src="model&img/score-SGD-0.01lr-50epoch.svg" alt="SGD 优化器" style="zoom:50%;" />
+SGD + 0.01 lr：
+<img src="model&img/score-SGD-0.01lr-50epoch.svg" alt="SGD" style="zoom:50%;" />
 
-测试结果：
-<img src="model&img/result.png" alt="测试结果" style="zoom:67%;" />
+forecast result：
+<img src="model&img/result.png" alt="forecast result" style="zoom:67%;" />
 
