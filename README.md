@@ -11,9 +11,12 @@
 
 将训练和测试文件夹下的 `label.txt` 文件改为 `path label` 的格式
 
-
-
 ## 模型数据
+
+|准确率|精确|召回|f1|
+|--|--|--|--|
+|92%|0.9784|0.9902|0.9781|
+
 AdamW 优化器 0.01 lr：
 <img src="model&img/score-adamw-0.01lr-50epoch.svg" alt="Adamw 优化器" style="zoom:50%;" />
 
