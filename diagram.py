@@ -49,7 +49,7 @@ def plotScore(plot_x, plot_acc, plot_recall, plot_precision, plot_f1, plot_x_los
     plt.xlabel('epoch', fontsize=14)
     plt.ylabel('loss', fontsize=14)
 
-    plt.savefig(fname='score.svg', format='svg')
+    plt.savefig(fname='./model&img/score.svg', format='svg')
 
     plt.show()
 

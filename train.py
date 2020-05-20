@@ -101,6 +101,6 @@ def train():
                                                                                                              score_f1,
                                                                                                              score_recall,
                                                                                                              score_precision))
-    torch.save(model.state_dict(), './model&score/model.pt')
+    torch.save(model.state_dict(), './model&img/model.pt')
 
     plotScore(plot_x, plot_acc, plot_recall, plot_precision, plot_f1, plot_x_loss, plot_loss)

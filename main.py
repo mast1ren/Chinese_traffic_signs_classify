@@ -7,7 +7,7 @@ from resnet import ResNet
 torch.cuda.empty_cache()
 
 model = ResNet().to(device)
-model.load_state_dict(torch.load('./model&score/model.pt'))
+model.load_state_dict(torch.load('./model&img/model.pt'))
 model.eval()
 
 # test(model)
