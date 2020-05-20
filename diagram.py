@@ -10,7 +10,7 @@ class_name = ['speed_Limit_5km/h', 'speed_limit_15km/h', 'speed_limit_30km/h', '
               'school_ahead', 'hard_right', 'hard_left', 'downhill_ahead', 'uphill_ahead', 'slow_down',
               'right_T_junction_ahead', 'left_T_junction_ahead', 'village_ahead', 'continuous_hard_turn',
               'unattended_railway_ahead', 'road_work', 'bumpy_road', 'attended_railway_ahead', 'rear-end_attention',
-              'stop', 'no_parking', 'no_entry', 'yield', 'stop_and_check']
+              'stop', 'no_thoroughfare', 'no_parking', 'no_entry', 'yield', 'stop_and_check']
 
 
 def plotScore(plot_x, plot_acc, plot_recall, plot_precision, plot_f1, plot_x_loss, plot_loss):
